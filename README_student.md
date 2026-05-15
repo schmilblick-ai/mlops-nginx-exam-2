@@ -161,12 +161,15 @@ ubuntu@ip-172-31-37-17:~/mlops-nginx-exam-2$
 
 4. la gestion de l'authentication grace au certificat et au htpasswd est en place
 
-5. l'alternance de 200/503 montre le gestion des limites contre les DDOS
+5. l'alternance de 200/503 montre la gestion des limites contre les DDOS
 
-6. le test montre la réalisation de l'AB testing correcte
+6. le test montre également la réalisation de l'AB testing correcte avec le switch par header
 
-7. on voit prometheus et grafan en place et répondant.
+7. on voit prometheus et grafana en place et répondant.
 
+
+
+----------------------------------------------------------------------------------
 
 
 ## 7. et enfin de l'usage des ressources avec la conteneurisation
