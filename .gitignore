@@ -1,0 +1,26 @@
+# ======================
+# Nginx - Certificats SSL
+# ======================
+#deployments/nginx/certs/
+# ou plus fin si tu veux garder le dossier vide dans git
+deployments/nginx/certs/*.key
+deployments/nginx/certs/*.crt
+deployments/nginx/certs/*.csr
+deployments/nginx/certs/*.srl
+deployments/nginx/certs/*.pem
+
+# ======================
+# Nginx - Authentification
+# ======================
+deployments/nginx/.htpasswd
+deployments/nginx/.htpasswd.*
+
+# ======================
+# Secrets généraux
+# ======================
+*.key
+*.pem
+.env
+.env.*
+!.env.example   # ← garder le template en exemple
+san.ext

@@ -1,26 +1,35 @@
 import os
 import joblib
 import numpy as np
-
+from fastapi.responses import Response 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-
-
-MODEL_PATH = os.path.join(os.path.dirname(__file__), 'model.joblib')
-
-# Chargement du modèle entraîné
-try:
-    model = joblib.load(MODEL_PATH)
-except FileNotFoundError:
-    raise RuntimeError(f"Model file not found at {MODEL_PATH}.")
-except Exception as e:
-    raise RuntimeError(f"Error loading model: {e}")
 
 app = FastAPI(
     title=" CoherentText? API",
     description="A simple API to predict if a text is coherent or just gibberish.",
     version="1.6.42-debug",
 )
+
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'model.joblib')
+model = None
+@app.on_event("startup")
+def load_model():
+    global model
+    # Chargement du modèle entraîné
+    try:
+        model = joblib.load(MODEL_PATH)
+    except FileNotFoundError:
+        raise RuntimeError(f"Model file not found at {MODEL_PATH}.")
+    except Exception as e:
+        raise RuntimeError(f"Error loading model: {e}")
+
+# Health check qui vérifie que le modèle est bien chargé
+@app.get("/health")
+def health():
+    if model is None:
+        return Response(status_code=503, content="model not loaded")
+    return {"status": "ok", "model": "loaded"}
 
 # modèle de données pour la requête d'entrée
 class Sentence(BaseModel):
