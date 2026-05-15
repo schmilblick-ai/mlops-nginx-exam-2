@@ -144,7 +144,7 @@ All tests passed successfully!
 1. nginx est bien le point d'entrée unique.
 
 2. on a bien 3+1 respectivement pour les deux api v1 et v2
-
+```bash
 ubuntu@ip-172-31-37-17:~/mlops-nginx-exam-2$ docker container ls
 CONTAINER ID   IMAGE                                    COMMAND                  CREATED          STATUS                    PORTS                                                                                                                           NAMES
 983caeb39645   grafana/grafana:latest                   "/run.sh"                34 minutes ago   Up 34 minutes             0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp                                                                                     grafana_dashboard
@@ -156,6 +156,7 @@ c45a736192f6   mlopsv-mlops-api-v1                      "uvicorn main:app --…"
 9b805ef794ba   mlopsv-mlops-api-v1                      "uvicorn main:app --…"   34 minutes ago   Up 34 minutes (healthy)   8001/tcp                                                                                                                        mlopsv-mlops-api-v1-1
 6aa79d2e1e8d   mlopsv-mlops-api-v2                      "uvicorn main:app --…"   34 minutes ago   Up 34 minutes (healthy)   8002/tcp                                                                                                                        mlopsv-mlops-api-v2-1
 ubuntu@ip-172-31-37-17:~/mlops-nginx-exam-2$ 
+```
 
 3. la com passe par https avec les configs ssl TSL en place
 
@@ -308,3 +309,6 @@ nginx/nginx-prometheus-exporter   latest    0ba32d7c37e7   7 months ago        1
 ```
 
 merci pour votre attention !
+
+and nice zip feature
+zip -r mlops-nginx-exam-2 mlops-nginx-exam-2 -x "\*.joblib" "mlo*/.git/*" @
